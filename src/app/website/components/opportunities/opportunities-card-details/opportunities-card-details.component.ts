@@ -1,0 +1,33 @@
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CardServiceService } from '../card-service.service';
+
+@Component({
+  selector: 'app-opportunities-card-details',
+  templateUrl: './opportunities-card-details.component.html',
+  styleUrls: ['./opportunities-card-details.component.scss']
+})
+export class OpportunitiesCardDetailsComponent {
+  id!: number;
+  dataDetails: any = [];
+  constructor(private route: ActivatedRoute, private cardService: CardServiceService) { }
+  center: google.maps.LatLngLiteral = { lat: 40.73061, lng: -73.935242 };
+  zoom = 5;
+  markerOptions: google.maps.MarkerOptions = { draggable: false };
+  markerPosition: google.maps.LatLngLiteral = this.center;
+  ngOnInit() {
+    this.route.params.subscribe((param: any) => {
+      this.id = param['id'];
+    })
+    this.getDetails();
+  }
+
+  getDetails() {
+    this.cardService.getOpportunitiesDetails(this.id).subscribe((res: any) => {
+      this.dataDetails = res.data;
+      console.log(this.dataDetails);
+      this.center = { lat: +this.dataDetails.latitude, lng: +this.dataDetails.longitude }
+    })
+  }
+}
+

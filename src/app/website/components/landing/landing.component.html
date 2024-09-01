@@ -1,0 +1,57 @@
+<div class="bg-gradient-to-r from-background_gradiant_from to-background_gradiant_to text-center py-10">
+    <h1 class="text-white text-3xl font-bold mb-4">معرض الفرص الاستثمارية</h1>
+    <p class="text-white mx-10">
+        هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد
+        مثل هذا
+        النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من
+        الفقرات
+        يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى
+        مفيد
+        لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.
+    </p>
+
+    <button type="button"
+        class="mt-6 bg-transparent text-white border-x-2 border-y-2 border-white font-semibold py-2 px-6 rounded-lg   transition duration-300"
+        (click)="showFilter = !showFilter">
+        البحث المتقدم
+    </button>
+</div>
+<!-- Filter Section -->
+<div *ngIf="showFilter" class="mt-6 bg-white p-4 rounded-lg shadow-md w-full ">
+    <div class="flex flex-wrap gap-4">
+
+
+        <mat-form-field appearance="fill" class="flex-[0_0_48%]">
+            <mat-label>اختيار تصنيف</mat-label>
+            <mat-select>
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="flex-[0_0_48%]">
+            <mat-label>البحث عن طريق كلمات مفتاحية</mat-label>
+            <input matInput placeholder="Enter value for Input 2" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="flex-[0_0_48%]">
+            <mat-label>القيمة الاستثمارية</mat-label>
+            <input matInput placeholder="Enter value for Input 3" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="flex-[0_0_48%]">
+            <mat-label>حالة الفرصة</mat-label>
+            <input matInput placeholder="Enter value for Input 1" />
+        </mat-form-field>
+    </div>
+
+    <div class="text-center">
+        <button
+            class="mt-6 bg-white text-blue-500 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300 custom">
+            Apply Filter
+        </button>
+    </div>
+</div>
+
+<app-investment-opportunities-card></app-investment-opportunities-card>

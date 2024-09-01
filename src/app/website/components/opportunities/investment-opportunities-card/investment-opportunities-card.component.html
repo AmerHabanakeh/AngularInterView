@@ -1,0 +1,55 @@
+<div class="px-12">
+    <div class="flex justify-center items-center gap-5 flex-wrap">
+        <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden mt-6" *ngFor="let card of data">
+            <div class="relative">
+                <img class="w-full object-cover image" src="{{ card.ads_image_url }}" alt="Drone Image" />
+                <div class="absolute top-0 right-0 flex space-x-2 p-2">
+                    <span
+                        class="bg-white text-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">{{card.category?.name_en??
+                        "No Name"}}</span>
+                    <span
+                        class="bg-white text-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">{{card.status}}</span>
+                </div>
+            </div>
+
+            <div class="p-4">
+                <h2 class="text-lg font-semibold text-gray-800 text-center">
+                    {{ card.title }}
+                </h2>
+                <div class="mt-4 flex justify-between text-center">
+                    <div class="mt-4 flex justify-center items-center">
+                        <p class="text-sm text-gray-700">معدل العائد الداخلي</p>
+                        <img src="../../../../assets/images/location.svg" alt="icon" />
+                    </div>
+                    <div class="mt-4 flex justify-between text-center">
+                        <p class="text-sm text-gray-700">القيمة الاستثمارية</p>
+                        <img src="../../../../assets/images/location.svg" alt="icon" />
+                    </div>
+                    <div class="mt-4 flex justify-between text-center">
+                        <p class="text-sm text-gray-700">القطاع</p>
+                        <img src="../../../../assets/images/location.svg" alt="icon" />
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <div class="flex justify-between text-sm text-gray-700">
+                        <span>{{ card.internal_rate_return }}</span>
+                        <span>{{ card.economic_activity }}</span>
+                        <span>{{ card.sector_en }}</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-around">
+                    <button type="button" (click)="opportunitiesDetails(card.id)"
+                        class="bg-white text-sky-400 border-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">
+                        عرض الفرصة
+                    </button>
+                    <button
+                        class="bg-sky-400 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-sky-700 transition duration-300">
+                        طلب الفرصة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+<div>
+    <!-- <img src="../../../../assets/images/details-landing.png" class="w-full" alt="landing" /> -->
+    <div>
+        <div class="swiper-container position-relative">
+            <swiper-container pagination="true" pagination-clickable="true" navigation="true"
+                navigation-clickable="true" lazy="loading">
+                <swiper-slide *ngFor="let image of dataDetails.images">
+
+                    <img src="{{image.image_url}}" alt="{{image.title}}" class="w-full h-96" loading="lazy" />
+                </swiper-slide>
+                <swiper-slide *ngIf="(dataDetails.images?.length??0) < 1">
+                    <img src="../../../../assets/images/details-landing.png" class="w-full" alt="landing" />
+                </swiper-slide>
+            </swiper-container>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="flex justify-end items-center relative">
+            <div class="w-fit  absolute left-10 -top-10 z-10   bg-white shadow-lg rounded-lg p-6 flex-1">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            تاريخ الإضافة
+                            <img src="../../../../assets/images/location.svg" alt="location">
+                        </p>
+                        <p class="font-bold">29/8/2024</p>
+                    </div>
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            رقم الفرصة
+                            <img src="../../../../assets/images/location.svg" alt="location">
+                        </p>
+                        <p class="font-bold">29/8/2024</p>
+                    </div>
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            مدة التنفيذ</p>
+                        <p class="font-bold">{{dataDetails.duration_implementation}}</p>
+                    </div>
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            القطاع <img src="../../../../assets/images/location.svg" alt="location">
+                        </p>
+                        <p class="font-bold">{{dataDetails.sector_en}}</p>
+                    </div>
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            معدل العائد الداخلي <img src="../../../../assets/images/location.svg" alt="location">
+                        </p>
+                        <p class="font-bold">29/8/2024</p>
+                    </div>
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            القيمة الاستثمارية <img src="../../../../assets/images/location.svg" alt="location">
+                        </p>
+                        <p class="font-bold">{{dataDetails.internal_rate_return}}</p>
+                    </div>
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            النشاط الاقتصادي <img src="../../../../assets/images/location.svg" alt="location">
+                        </p>
+                        <p class="font-bold">{{dataDetails.economic_activity}}</p>
+                    </div>
+                    <div class="px-8">
+                        <p class="text-gray-600 flex items-center">
+                            خدمة التمويل المطلوبة <img src="../../../../assets/images/location.svg" alt="location">
+                        </p>
+                        <p class="font-bold">{{dataDetails.service}}</p>
+                    </div>
+                </div>
+
+                <button class="mt-6 w-full py-2 bg-primary_color text-white rounded-lg hover:bg-sky-600 duration-200">
+                    شراء تفاصيل المشروع
+                </button>
+            </div>
+            <div class="max-w-lg m-7">
+                <h2 class="m-8 text-3xl text-center">{{dataDetails.title}}</h2>
+                <mat-tab-group>
+                    <mat-tab label="الموقع">
+                        <label for="search" class="block  mb-2 mt-7 text-2xl text-right">الموقع</label>
+                        <div class="relative">
+                            <input type="text" id="search" placeholder="Search..."
+                                class="w-full border border-gray-300 rounded-lg py-2 px-4 pr-10 text-sm focus:outline-none mb-7" />
+
+                        </div>
+                        <div class="map-container">
+                            <google-map height="400px" width="100%" [center]="center" [zoom]="zoom">
+                                <map-marker [position]="markerPosition" [options]="markerOptions"></map-marker>
+                            </google-map>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="الملفات">
+                        <h1 class="mb-5 mt-5 text-right ">الملفات</h1>
+                        <table class="w-full text-left border-collapse">
+                            <thead class="text-center">
+                                <tr class="bg-gray-200 text-gray-700 border-b">
+                                    <th class="py-3 px-6 font-medium">Download</th>
+                                    <th class="py-3 px-6 font-medium">File Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b hover:bg-gray-50 text-center"
+                                    *ngFor="let files of dataDetails.files">
+                                    <td class="py-3 px-6 text-center">
+                                        <a href="/path/to/document1.pdf" download
+                                            class="text-black hover:text-blue-700">
+                                            <lucide-icon name="download"></lucide-icon>
+                                        </a>
+                                    </td>
+                                    <td class="py-3 px-6">{{files?.image}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </mat-tab>
+                    <mat-tab label="الوصف">
+                        <h1 class="mb-5 mt-5 text-right leading-tight">{{dataDetails.title}}</h1>
+                        <p class="leading-tight">{{dataDetails.description}}</p>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>
