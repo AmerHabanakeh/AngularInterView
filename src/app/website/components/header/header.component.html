@@ -1,10 +1,31 @@
 <nav class="flex justify-between items-center bg-gray-100 p-4 shadow-md">
-    <div class="flex items-center space-x-4">
-        <button class="bg-transparent text-gray-700 px-4 py-2">تسجيل الدخول</button>
-        <button class="bg-blue-300 text-white px-4 py-2 rounded">English</button>
+    <div class="flex items-center space-x-4 gap-10">
+        <div class="flex gap-2 justify-center items-center cursor-pointer">
+            <button class="bg-transparent  text-primary_color">{{"login" | translate}}</button>
+            <img src="../../../../assets/images/login.svg" alt="login">
+        </div>
+        <!-- <div class="flex justify-center items-center cursor-pointer gap-2" (click)="changeLanguage()">
+            <div class="flex gap-2 justify-center items-center cursor-pointer">
+                <span>{{ lang == "en" ? "Ar" : "En" }}</span>
+                <img src="../../../../assets/images/icon _language square_.svg" alt="language">
+            </div>
+        </div> -->
+        <div class="relative flex justify-center items-center cursor-pointer gap-2" (click)="toggleDropdown()">
+            <div class="flex gap-2 items-center cursor-pointer">
+                <img src="../../../../assets/images/arrowDown.svg" alt="language arrow" class="w-4 h-4">
+                <span>{{ lang == "en" ? "English" : "Arabic" }}</span>
+                <img src="../../../../assets/images/icon _language square_.svg" alt="language">
+            </div>
+
+            <div *ngIf="showDropdown"
+                class="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-300 shadow-lg rounded-lg z-10">
+                <div (click)="changeLanguage('en')" class="px-4 py-2 cursor-pointer hover:bg-gray-100">English</div>
+                <div (click)="changeLanguage('ar')" class="px-4 py-2 cursor-pointer hover:bg-gray-100">Arabic</div>
+            </div>
+        </div>
     </div>
     <div class="flex space-x-6 text-gray-700">
-        <button routerLink="/" class="hover:text-blue-500 text-2xl">Home</button>
+        <button routerLink="/" class="hover:text-blue-500 text-2xl">{{"home_page" | translate}}</button>
     </div>
     <div>
         <img src="../../../../assets/images/logo.png" alt="logo">

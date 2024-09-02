@@ -1,14 +1,17 @@
 <div class="px-12">
     <div class="flex justify-center items-center gap-5 flex-wrap">
-        <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden mt-6" *ngFor="let card of data">
+        <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden mt-6" *ngFor="let card of cardService.data">
             <div class="relative">
                 <img class="w-full object-cover image" src="{{ card.ads_image_url }}" alt="Drone Image" />
                 <div class="absolute top-0 right-0 flex space-x-2 p-2">
                     <span
-                        class="bg-white text-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">{{card.category?.name_en??
-                        "No Name"}}</span>
+                        class="bg-white text-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">{{
+                        translate.currentLang === 'en' ?
+                        (card.category?.name_en?? 'no_name' | translate) : (card.category?.name_ar?? 'no_name' |
+                        translate) }}</span>
                     <span
-                        class="bg-white text-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">{{card.status}}</span>
+                        class="bg-white text-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">{{
+                        card.status }}</span>
                 </div>
             </div>
 
@@ -18,15 +21,15 @@
                 </h2>
                 <div class="mt-4 flex justify-between text-center">
                     <div class="mt-4 flex justify-center items-center">
-                        <p class="text-sm text-gray-700">معدل العائد الداخلي</p>
+                        <p class="text-sm text-gray-700">{{"internal_rate_return" | translate}}</p>
                         <img src="../../../../assets/images/location.svg" alt="icon" />
                     </div>
                     <div class="mt-4 flex justify-between text-center">
-                        <p class="text-sm text-gray-700">القيمة الاستثمارية</p>
+                        <p class="text-sm text-gray-700">{{"economic_activity" | translate}}</p>
                         <img src="../../../../assets/images/location.svg" alt="icon" />
                     </div>
                     <div class="mt-4 flex justify-between text-center">
-                        <p class="text-sm text-gray-700">القطاع</p>
+                        <p class="text-sm text-gray-700">{{"sector" | translate}}</p>
                         <img src="../../../../assets/images/location.svg" alt="icon" />
                     </div>
                 </div>
@@ -34,19 +37,21 @@
                 <div class="mt-4 text-center">
                     <div class="flex justify-between text-sm text-gray-700">
                         <span>{{ card.internal_rate_return }}</span>
-                        <span>{{ card.economic_activity }}</span>
-                        <span>{{ card.sector_en }}</span>
+                        <span>{{ translate.currentLang == 'en' ? (card.currency?.name_en?? 'no_price' |translate):
+                            (card.currency?.name_ar??'no_price' | translate)
+                            }}</span>
+                        <span>{{ translate.currentLang == 'en' ? card.sector_en : card.sector_ar ?? 'No sector'}}</span>
                     </div>
                 </div>
 
-                <div class="mt-6 flex justify-around">
+                <div class="mt-6 flex justify-center gap-2">
                     <button type="button" (click)="opportunitiesDetails(card.id)"
                         class="bg-white text-sky-400 border-sky-400 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">
-                        عرض الفرصة
+                        {{"view_opportunity" | translate}}
                     </button>
                     <button
                         class="bg-sky-400 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-sky-700 transition duration-300">
-                        طلب الفرصة
+                        {{"request_opportunity" | translate}}
                     </button>
                 </div>
             </div>

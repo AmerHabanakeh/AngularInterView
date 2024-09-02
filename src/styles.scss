@@ -6,3 +6,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: "El Messiri", sans-serif; }
+
+
+html[dir='ltr'] {
+    .custom-heading {
+        text-align: left;
+    }
+}
+
+
+html[dir='rtl'] {
+    .custom-heading {
+        text-align: right;
+    }
+}

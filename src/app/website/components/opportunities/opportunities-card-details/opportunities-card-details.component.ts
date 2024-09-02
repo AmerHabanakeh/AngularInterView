@@ -12,9 +12,11 @@ export class OpportunitiesCardDetailsComponent {
   dataDetails: any = [];
   constructor(private route: ActivatedRoute, private cardService: CardServiceService) { }
   center: google.maps.LatLngLiteral = { lat: 40.73061, lng: -73.935242 };
-  zoom = 5;
+  zoom = 1;
   markerOptions: google.maps.MarkerOptions = { draggable: false };
   markerPosition: google.maps.LatLngLiteral = this.center;
+
+
   ngOnInit() {
     this.route.params.subscribe((param: any) => {
       this.id = param['id'];
@@ -28,6 +30,12 @@ export class OpportunitiesCardDetailsComponent {
       console.log(this.dataDetails);
       this.center = { lat: +this.dataDetails.latitude, lng: +this.dataDetails.longitude }
     })
+  }
+
+  extractFileName(url: string) {      // To Show The Name of Image in the Files Tab => Table 
+    if (!url) return '';
+    const segments = url.split('/');
+    return segments.pop() || '';
   }
 }
 

@@ -1,0 +1,19 @@
+<h1 class="my-5 mx-5 text-right text-lg font-semibold custom-heading">{{"files_tab" | translate}}</h1>
+<table class="w-full text-left border-collapse">
+    <thead class="text-center bg-gray-100">
+        <tr class="text-gray-700 border-b">
+            <th class="py-3 px-6 font-medium">Download</th>
+            <th class="py-3 px-6 font-medium">File Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="border-b hover:bg-gray-50 text-center" *ngFor="let file of files">
+            <td class="py-3 px-6 text-center">
+                <a href="{{file.url}}" download class="text-black hover:text-blue-700">
+                    <lucide-icon name="download"></lucide-icon>
+                </a>
+            </td>
+            <td class="py-3 px-6">{{ extractFileName(file.image_url)}}</td>
+        </tr>
+    </tbody>
+</table>

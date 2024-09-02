@@ -1,0 +1,10 @@
+<label for="search" class="block custom-heading text-lg font-semibold my-5 mx-5">{{"location_tab" | translate}}</label>
+<div class="relative">
+    <input type="text" id="search" placeholder="{{translate.currentLang == 'en' ? 'Search Location' : 'ابحث عن موقع'}}"
+        class="w-full border border-gray-300 rounded-lg py-2 px-4 mb-6">
+</div>
+<div class="h-96 w-full bg-gray-200 rounded-lg overflow-hidden">
+    <google-map height="100%" width="100%" [center]="locationData.center" [zoom]="locationData.zoom">
+        <map-marker [position]="locationData.markerPosition" [options]="locationData.markerOptions"></map-marker>
+    </google-map>
+</div>

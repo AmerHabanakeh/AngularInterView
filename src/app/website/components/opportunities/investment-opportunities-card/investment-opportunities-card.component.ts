@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CardServiceService } from '../card-service.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-investment-opportunities-card',
@@ -12,9 +13,8 @@ export class InvestmentOpportunitiesCardComponent implements OnInit {
     this.getAllOpportunities()
   }
 
-  data: any[] = [];
 
-  constructor(private router: Router, private cardService: CardServiceService) { }
+  constructor(private router: Router, public cardService: CardServiceService, public translate: TranslateService) { }
 
   opportunitiesDetails(id: number) {
     this.router.navigate([`/details/${id}`]);
@@ -23,8 +23,8 @@ export class InvestmentOpportunitiesCardComponent implements OnInit {
 
   getAllOpportunities() {
     this.cardService.getAllOpportunities().subscribe((res: any) => {
-      this.data = res.data.data
-      console.log(this.data);
+      this.cardService.data = res.data.data
+      // console.log(this.data);
     })
   }
 }
