@@ -27,7 +27,6 @@ export class OpportunitiesCardDetailsComponent {
   getDetails() {
     this.cardService.getOpportunitiesDetails(this.id).subscribe((res: any) => {
       this.dataDetails = res.data;
-      console.log(this.dataDetails);
       this.center = { lat: +this.dataDetails.latitude, lng: +this.dataDetails.longitude }
     })
   }
@@ -38,4 +37,5 @@ export class OpportunitiesCardDetailsComponent {
     return segments.pop() || '';
   }
 }
+
 
