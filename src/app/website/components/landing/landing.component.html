@@ -17,8 +17,11 @@
             <mat-form-field appearance="fill" class="flex-[0_0_48%]">
                 <mat-label>{{ "select_category" | translate }}</mat-label>
                 <mat-select formControlName="category">
-                    <mat-option *ngFor="let options of cardService.data" value="{{ options.category?.id }}">
-                        {{ options.category?.id?? ''}}</mat-option>
+                    <div *ngFor="let options of cardService.data">
+                        <mat-option *ngIf="options.category?.id" value="{{ options.category?.id }}">
+                            {{ options.category?.id }}
+                        </mat-option>
+                    </div>
                 </mat-select>
             </mat-form-field>
 
@@ -38,15 +41,13 @@
           }}" />
             </mat-form-field>
 
-
             <mat-form-field appearance="fill" class="flex-[0_0_48%]">
                 <mat-label>{{ "opportunity_status" | translate }}</mat-label>
                 <mat-select formControlName="opportunityStatus">
-                    <mat-option value="waiting">waiting</mat-option>
-                    <mat-option value="submitted">submitted</mat-option>
+                    <mat-option>Waiting</mat-option>
+                    <mat-option>Submitted</mat-option>
                 </mat-select>
             </mat-form-field>
-
         </div>
 
         <div class="text-center">
