@@ -1,19 +1,20 @@
-<h1 class="my-5 mx-5 text-right text-lg font-semibold custom-heading">{{"files_tab" | translate}}</h1>
-<table class="w-full text-left border-collapse">
-    <thead class="text-center bg-gray-100">
-        <tr class="text-gray-700 border-b">
-            <th class="py-3 px-6 font-medium">Download</th>
-            <th class="py-3 px-6 font-medium">File Name</th>
+<h1 class="my-4 mx-3 text-end fs-5 fw-semibold">{{"files_tab" | translate}}</h1>
+
+<table class="table table-bordered w-100">
+    <thead class="table-light text-center">
+        <tr class="text-muted">
+            <th class="py-2 px-3">Download</th>
+            <th class="py-2 px-3">File Name</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="border-b hover:bg-gray-50 text-center" *ngFor="let file of files">
-            <td class="py-3 px-6 text-center">
-                <a class="text-black hover:text-blue-700" (click)="onDownload(file?.image)">
-                    <lucide-icon name="download"></lucide-icon>
+        <tr class="text-center align-middle hover-bg-light" *ngFor="let file of files">
+            <td class="py-2 px-3">
+                <a href="#" class="text-dark text-decoration-none" (click)="onDownload(file?.image)">
+                    <lucide-icon name="download" class="mx-auto"></lucide-icon>
                 </a>
             </td>
-            <td class="py-3 px-6">{{ extractFileName(file?.image_url)}}</td>
+            <td class="py-2 px-3">{{ extractFileName(file?.image_url) }}</td>
         </tr>
     </tbody>
 </table>

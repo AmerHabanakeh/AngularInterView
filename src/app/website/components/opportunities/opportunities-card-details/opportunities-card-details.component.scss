@@ -1,3 +1,24 @@
 table {
   width: 100%;
 }
+
+.custom-image {
+  height: 384px !important;
+}
+
+.custom-box {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  justify-items:end;
+}
+
+.custom-box span,
+.custom-box lucide-icon {
+  color: #A8A3A3;
+}
+
+.custom-box-container {
+  height: fit-content;
+  margin-top: -130px;
+}

@@ -1,58 +1,73 @@
-<div class="bg-gradient-to-r from-background_gradiant_from to-background_gradiant_to text-center py-10">
-    <h1 class="text-white text-3xl font-bold mb-4">
+<!-- Hero Section -->
+<div class="text-center py-5 custom-landing">
+    <h1 class="text-white display-4 font-weight-bold mb-3">
         {{ "investment_opportunities_exhibition" | translate }}
     </h1>
-    <p class="text-white mx-10">{{ "description_landing" | translate }}</p>
-
-    <button type="button"
-        class="mt-6 bg-transparent text-white border-x-2 border-y-2 border-white font-semibold py-2 px-6 rounded-lg transition duration-300"
+    <p class="text-white mx-3">
+        {{ "description_landing" | translate }}
+    </p>
+    <button type="button" class="btn btn-outline-light mt-4 font-weight-semibold px-4 py-2 rounded-lg"
         (click)="showFilter = !showFilter">
-        البحث المتقدم
+        {{"advanced_search" | translate}}
     </button>
 </div>
+
 <!-- Filter Section -->
-<div *ngIf="showFilter" class="mt-6 bg-white p-4 rounded-lg shadow-md w-full">
+<div *ngIf="showFilter" class="mt-4 bg-white p-4 rounded-lg shadow-sm w-100">
     <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
-        <div class="flex flex-wrap gap-4">
-            <mat-form-field appearance="fill" class="flex-[0_0_48%]">
-                <mat-label>{{ "select_category" | translate }}</mat-label>
-                <mat-select formControlName="category">
-                    <div *ngFor="let options of cardService.data">
-                        <mat-option *ngIf="options.category?.id" value="{{ options.category?.id }}">
-                            {{ options.category?.id }}
-                        </mat-option>
-                    </div>
-                </mat-select>
-            </mat-form-field>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="category">{{ "select_category" | translate }}</label>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-select formControlName="category">
+                            <div *ngFor="let options of cardService.data">
+                                <mat-option *ngIf="options.category?.id" value="{{ options.category?.id }}">
+                                    {{ options.category?.id }}
+                                </mat-option>
+                            </div>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
 
-            <mat-form-field appearance="fill" class="flex-[0_0_48%]">
-                <mat-label>{{ "key_search" | translate }}</mat-label>
-                <input matInput formControlName="keySearch" placeholder="{{
-            translate.currentLang == 'en' ? 'Search ...' : 'ابحث ...'
-          }}" />
-            </mat-form-field>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="keySearch">{{ "key_search" | translate }}</label>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <input matInput formControlName="keySearch" class="form-control" placeholder="{{
+                            translate.currentLang == 'en' ? 'Search ...' : 'ابحث ...'
+                        }}" />
+                    </mat-form-field>
+                </div>
+            </div>
 
-            <mat-form-field appearance="fill" class="flex-[0_0_48%]">
-                <mat-label>{{ "economic_activity" | translate }}</mat-label>
-                <input matInput formControlName="economicActivity" placeholder="{{
-            translate.currentLang == 'en'
-              ? 'Enter economic activity ...'
-              : 'أدخل قيمة استثمارية ...'
-          }}" />
-            </mat-form-field>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="economicActivity">{{ "economic_activity" | translate }}</label>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <input matInput formControlName="economicActivity" class="form-control" placeholder="{{
+                            translate.currentLang == 'en' ? 'Enter economic activity ...' : 'أدخل قيمة استثمارية ...'
+                        }}" />
+                    </mat-form-field>
+                </div>
+            </div>
 
-            <mat-form-field appearance="fill" class="flex-[0_0_48%]">
-                <mat-label>{{ "opportunity_status" | translate }}</mat-label>
-                <mat-select formControlName="opportunityStatus">
-                    <mat-option>Waiting</mat-option>
-                    <mat-option>Submitted</mat-option>
-                </mat-select>
-            </mat-form-field>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="opportunityStatus">{{ "opportunity_status" | translate }}</label>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-select formControlName="opportunityStatus">
+                            <mat-option>Waiting</mat-option>
+                            <mat-option>Submitted</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
 
         <div class="text-center">
-            <button type="submit"
-                class="mt-6 bg-white text-blue-500 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-50 transition duration-300 custom">
+            <button type="submit" class=" btn custom-button mt-4 font-weight-semibold px-4 py-2 rounded-lg">
                 {{ "apply_filter" | translate }}
             </button>
         </div>

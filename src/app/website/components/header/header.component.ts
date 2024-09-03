@@ -32,10 +32,11 @@ export class HeaderComponent {
     this.showDropdown = !this.showDropdown;
   }
 
-  @HostListener('document:click', ['$event'])
-  onClick(event: Event) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.showDropdown = false;
+
+
+  @HostListener('document:click', ['$event.target'])
+  onClickOutside(targetElement: HTMLElement): void {
+    if (!targetElement.closest('.mobile-menu') && !targetElement.closest('.menu-toggle')) {
     }
   }
 
